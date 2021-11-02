@@ -1,13 +1,16 @@
 import React from 'react';
 
 const Computer = (props) => {
-  const {state} = props;
+  const {state, setState} = props;
   
   return (
     <section className="computer">
       <span
         role="img" 
         aria-label="robot" 
+        data-testid="robot-head-icon"
+        className={ state.cheating ? 'cheating' : null }
+        onClick={() => setState(prev => ({...prev, cheating: !prev.cheating}))}
       >
         🤖
       </span>

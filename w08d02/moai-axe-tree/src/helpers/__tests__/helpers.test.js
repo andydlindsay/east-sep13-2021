@@ -1,4 +1,4 @@
-import { announceResult } from '../helpers'
+import { announceResult, compSelect } from '../helpers'
 
 describe('announceResult function', () => {
   let fakeState;
@@ -33,4 +33,29 @@ describe('announceResult function', () => {
   test('returns "Waiting" if nothing is passed in', () => {
     expect(announceResult()).toBe('Waiting');
   });
+});
+
+describe('compSelect function', () => {
+
+  test('if comp is cheating, it returns the winning value', () => {
+    const cheating = true;
+    const playerSelection = 'Axe';
+
+    const actual = compSelect(playerSelection, cheating);
+    const expected = 'Moai';
+
+    expect(actual).toBe(expected);
+  });
+
+  test('if cheating is false, the computer returns a random value', () => {
+    const cheating = false;
+    const playerSelection = 'Axe';
+
+    const actual = compSelect(playerSelection, cheating);
+    const options = ['Moai', 'Axe', 'Tree'];
+
+    // expect(options.includes(actual)).toBe(true);
+    expect(options).toContain(actual);
+  });
+
 });
